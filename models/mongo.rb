@@ -6,9 +6,11 @@ Model.new(:mongo, 'Mongo Backup') do
     db.host               = ENV['MONGO_HOST']
     db.port               = ENV['MONGO_PORT']
     db.ipv6               = false
-    db.only_collections   = [ENV['MONGO_COLLECTION']]
     db.lock               = false
     db.oplog              = false
+    unless ENV['MONGO_COLLECTIONS'].nil?
+      db.only_collections = ENV['MONGO_COLLECTIONS'].split(',')
+    end
   end
 
   store_with S3 do |s3|
