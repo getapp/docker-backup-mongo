@@ -1,8 +1,8 @@
 Model.new(:mongo, 'Mongo Backup') do
   database MongoDB do |db|
     db.name               = ENV['MONGO_DATABASE']
-    db.username           = ENV['MONGO_USER']
-    db.password           = ENV['MONGO_PASS']
+    db.username           = ENV['MONGO_USER'] unless ENV['MONGO_USER'].nil?
+    db.password           = ENV['MONGO_PASS'] unless ENV['MONGO_PASS'].nil?
     db.host               = ENV['MONGO_HOST']
     db.port               = ENV['MONGO_PORT']
     db.ipv6               = false
