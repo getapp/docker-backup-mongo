@@ -9,7 +9,7 @@ Model.new(:mongo, 'Mongo Backup') do
     db.lock               = false
     db.oplog              = false
     db.additional_options = [].tap do |opts|
-      opts << "--query='#{ENV['MONGO_QUERY']}'" unless ENV['MONGO_QUERY'].nil?
+      opts << "--query=\"#{ENV['MONGO_QUERY']}\"" unless ENV['MONGO_QUERY'].nil?
     end
     unless ENV['MONGO_COLLECTIONS'].nil?
       db.only_collections = ENV['MONGO_COLLECTIONS'].split(',')
