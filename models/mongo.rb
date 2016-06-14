@@ -1,5 +1,4 @@
-backup_name = (ENV['BACKUP_NAME'] || 'mongo').to_sym
-Model.new(backup_name, 'Mongo Backup') do
+Model.new(:mongo, 'Mongo Backup') do
   database MongoDB do |db|
     db.name               = ENV['MONGO_DATABASE']
     db.username           = ENV['MONGO_USER'] unless ENV['MONGO_USER'].nil?
